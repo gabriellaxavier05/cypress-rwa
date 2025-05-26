@@ -21,7 +21,7 @@ describe('Testes de Login', () => {
 
     it('Login com falha - senha inválido', () => {
         cy.visit('/signin');
-        cy.get(seletoresLogin.campoUsername).type(userData.usuarioSucesso.username) // preenche o campo username
+        cy.get(seletoresLogin.campoUsername).type(userData.usuarioFalha.username) // preenche o campo username com dado inválido
         cy.get(seletoresLogin.campoPassword).type(userData.usuarioFalha.password) // preenche o campo password com dado inválido
         cy.get(seletoresLogin.checkboxRemember).check() // clica no checkbox
         cy.get(seletoresLogin.btnSignIn).click() // clica no botão de login
