@@ -6,5 +6,11 @@
     "usuarioFalha": {
         "username": "Heather",
         "password": "secreto"
+    },
+    "cadastro": {
+        "firstName": "Nilce",
+        "lastName": "Martins",
+        "username": "nilcemartins92",
+        "password": "s3cret"
     }
 }
