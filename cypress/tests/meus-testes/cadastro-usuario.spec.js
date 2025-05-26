@@ -10,6 +10,7 @@ describe('Testes de Cadastro de usuário', () => {
         campoConfirmPassword: "[name='confirmPassword']",
         btnSingUp: "[type='submit']",
         tituloSignIn: "h1",
+        errorCampoConfirmPassword: "#confirmPassword-helper-text",
     };
 
     it('Cadastro realizado com sucesso', () => {
@@ -23,4 +24,15 @@ describe('Testes de Cadastro de usuário', () => {
         cy.get(seletoresCadastro.btnSingUp).click(); // clica no botão de cadastro
         cy.get(seletoresCadastro.tituloSignIn).should('contain', 'Sign in'); // verifica se o título de Sign In está visível
     })
+
+    it.only('Cadastro com dados diferentes nos campos Password e Confirm Password', () => {
+        cy.visit('/signin')
+        cy.get(seletoresCadastro.linkSignUp).click(); // clica no link de cadastro
+        cy.get(seletoresCadastro.campoFirstName).type(userData.cadastro.firstName); // preenche o campo firstName
+        cy.get(seletoresCadastro.campoLastName).type(userData.cadastro.lastName); // preenche o campo lastName
+        cy.get(seletoresCadastro.campoUsername).type(userData.cadastro.username); // preenche o campo username
+        cy.get(seletoresCadastro.campoPassword).type(userData.cadastro.password); // preenche o campo password
+        cy.get(seletoresCadastro.campoConfirmPassword).type('senhaerrada'); // preenche o campo confirmPassword com dado diferente
+        cy.get(seletoresCadastro.errorCampoConfirmPassword).should('contain', 'Password does not match'); // verifica se a mensagem de erro está visível
+    });
 });
