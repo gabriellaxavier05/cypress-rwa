@@ -1,38 +1,36 @@
 import userData from '../../fixtures/userData.json'; // importação dos dados do usuário do arquivo JSON
+import CadastroPage from '../../support/pagesObj/cadastroPage'; // importação da classe LoginPage
+
+// instaciação da classe CadastroPage
+const cadastroPage = new CadastroPage();
+
 
 describe('Testes de Cadastro de usuário', () => {
-    const seletoresCadastro = {
-        linkSignUp: "[href='/signup']",
-        campoFirstName: "[name='firstName']",
-        campoLastName: "[name='lastName']",
-        campoUsername: "[name='username']",
-        campoPassword: "[name='password']",
-        campoConfirmPassword: "[name='confirmPassword']",
-        btnSingUp: "[type='submit']",
-        tituloSignIn: "h1",
-        errorCampoConfirmPassword: "#confirmPassword-helper-text",
-    };
+    beforeEach(() => {
+        cy.clearLocalStorage(); // limpa tudo do localStorage
+    });
 
     it('Cadastro realizado com sucesso', () => {
-        cy.visit('/signin')
-        cy.get(seletoresCadastro.linkSignUp).click(); // clica no link de cadastro
-        cy.get(seletoresCadastro.campoFirstName).type(userData.cadastro.firstName); // preenche o campo firstName
-        cy.get(seletoresCadastro.campoLastName).type(userData.cadastro.lastName); // preenche o campo lastName
-        cy.get(seletoresCadastro.campoUsername).type(userData.cadastro.username); // preenche o campo username
-        cy.get(seletoresCadastro.campoPassword).type(userData.cadastro.password); // preenche o campo password
-        cy.get(seletoresCadastro.campoConfirmPassword).type(userData.cadastro.password); // preenche o campo confirmPassword
-        cy.get(seletoresCadastro.btnSingUp).click(); // clica no botão de cadastro
-        cy.get(seletoresCadastro.tituloSignIn).should('contain', 'Sign in'); // verifica se o título de Sign In está visível
-    })
+        cadastroPage.acessoPagCadastro(); // acessa a página de cadastro
+        cadastroPage.cadastroUsuario(
+            userData.cadastro.firstName,
+            userData.cadastro.lastName,
+            userData.cadastro.username,
+            userData.cadastro.password,
+            userData.cadastro.password
+        ); // realiza o cadastro com os dados do usuário
+        cadastroPage.verificaCadastroSucesso(); // verifica se o cadastro foi bem-sucedido
+    });
 
     it.only('Cadastro com dados diferentes nos campos Password e Confirm Password', () => {
-        cy.visit('/signin')
-        cy.get(seletoresCadastro.linkSignUp).click(); // clica no link de cadastro
-        cy.get(seletoresCadastro.campoFirstName).type(userData.cadastro.firstName); // preenche o campo firstName
-        cy.get(seletoresCadastro.campoLastName).type(userData.cadastro.lastName); // preenche o campo lastName
-        cy.get(seletoresCadastro.campoUsername).type(userData.cadastro.username); // preenche o campo username
-        cy.get(seletoresCadastro.campoPassword).type(userData.cadastro.password); // preenche o campo password
-        cy.get(seletoresCadastro.campoConfirmPassword).type('senhaerrada'); // preenche o campo confirmPassword com dado diferente
-        cy.get(seletoresCadastro.errorCampoConfirmPassword).should('contain', 'Password does not match'); // verifica se a mensagem de erro está visível
+        cadastroPage.acessoPagCadastro(); // acessa a página de cadastro
+        cadastroPage.cadastroUsuario(
+            userData.cadastro.firstName,
+            userData.cadastro.lastName,
+            userData.cadastro.username,
+            userData.cadastro.password,
+            userData.cadastro.password + 'errado' // preenche o campo confirmPassword com dado diferente
+        );
+        cadastroPage.verificaMsgErroConfirmPassword(); // verifica se a mensagem de erro está visível
     });
 });

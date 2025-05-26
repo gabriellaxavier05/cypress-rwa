@@ -74,6 +74,39 @@
       "balance": 49474,
       "createdAt": "2023-12-07T04:39:38.383Z",
       "modifiedAt": "2024-03-07T00:07:36.510Z"
+    },
+    {
+      "id": "fvnnxtcAx",
+      "uuid": "f97eb378-f9a3-444f-8787-bba8f6d73797",
+      "firstName": "Nilce",
+      "lastName": "Martins",
+      "username": "nilcemartins92",
+      "password": "$2a$10$4K2YHS/IRSmRx35c06Fht.PHUkIRvktC9ljm4Qt8GzNYMATRBvety",
+      "balance": 0,
+      "createdAt": "2025-05-26T18:10:47.093Z",
+      "modifiedAt": "2025-05-26T18:10:47.093Z"
+    },
+    {
+      "id": "eqVsYkIfQ",
+      "uuid": "cce8cd5e-563d-4e0a-9b73-58f2938704b0",
+      "firstName": "Nilce",
+      "lastName": "Martins",
+      "username": "nilcemartins92",
+      "password": "$2a$10$2IkvyeKovgBzBFHmnlAPx.8leIehQ42hwVW7D.tyLtWfLOjYd0eSq",
+      "balance": 0,
+      "createdAt": "2025-05-26T18:19:32.976Z",
+      "modifiedAt": "2025-05-26T18:19:32.976Z"
+    },
+    {
+      "id": "5QuyeFqK5",
+      "uuid": "49607ca7-540e-4b88-937b-82a45a718bda",
+      "firstName": "Nilce",
+      "lastName": "Martins",
+      "username": "nilcemartins92",
+      "password": "$2a$10$HKcWevBhAxt1eh5.o18sHO9sr64tASSHIerBIvBBFxlBzqsRjh0zm",
+      "balance": 0,
+      "createdAt": "2025-05-26T18:20:51.190Z",
+      "modifiedAt": "2025-05-26T18:20:51.190Z"
     }
   ],
   "contacts": [
