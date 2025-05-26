@@ -1,30 +1,26 @@
 import userData from '../../fixtures/userData.json'; // importação dos dados do usuário do arquivo JSON
+import LoginPage from '../../support/pagesObj/loginPage'; // importação da classe LoginPage
+
+// instanciação da classe LoginPage
+const loginPage = new LoginPage();
 
 describe('Testes de Login', () => {
-    const seletoresLogin = {
-        campoUsername: "[name='username']",
-        campoPassword: "[name='password']",
-        checkboxRemember: "[name='remember']",
-        btnSignIn: "[type='submit']",
-        abaEveryoneHome: "[tabindex='0']",
-        msgErroLogin: "[role='alert']",
-    }
+
+    beforeEach(() => {
+        cy.clearLocalStorage(); // limpa tudo do localStorage
+    });
+
 
     it('Login com sucesso', () => {
-        cy.visit('/signin');
-        cy.get(seletoresLogin.campoUsername).type(userData.usuarioSucesso.username) // preenche o campo username
-        cy.get(seletoresLogin.campoPassword).type(userData.usuarioSucesso.password) // preenche o campo password
-        cy.get(seletoresLogin.checkboxRemember).check() // clica no checkbox
-        cy.get(seletoresLogin.btnSignIn).click() // clica no botão de login
-        cy.get(seletoresLogin.abaEveryoneHome).should('contain', 'Everyone') // verifica se a aba Everyone Home está visível
+        loginPage.acessoPagLogin(); // acessa a página de login
+        loginPage.loginUsuario(userData.usuarioSucesso.username, userData.usuarioSucesso.password); // realiza o login com os dados de sucesso
+        loginPage.verificaLoginSucesso(); // verifica se o login foi bem-sucedido
     });
 
-    it('Login com falha - senha inválido', () => {
-        cy.visit('/signin');
-        cy.get(seletoresLogin.campoUsername).type(userData.usuarioFalha.username) // preenche o campo username com dado inválido
-        cy.get(seletoresLogin.campoPassword).type(userData.usuarioFalha.password) // preenche o campo password com dado inválido
-        cy.get(seletoresLogin.checkboxRemember).check() // clica no checkbox
-        cy.get(seletoresLogin.btnSignIn).click() // clica no botão de login
-        cy.get(seletoresLogin.msgErroLogin).should('contain', 'Username or password is invalid') // verifica se a mensagem de erro está visível
+    it.only('Login com falha - senha inválido', () => {
+        loginPage.acessoPagLogin(); // acessa a página de login
+        loginPage.loginUsuario(userData.usuarioFalha.username, userData.usuarioFalha.password); // realiza o login com os dados de falha
+        loginPage.verificaMsgErroLogin(); // verifica se a mensagem de erro está visível
     });
+    
 });
