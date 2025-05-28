@@ -7,6 +7,7 @@ class EnviarDinheiro {
             campoNoteAmount: "[name='description']",
             btnPay: "[type='submit']",
             alertaSucessoTransacao: "[role='alert']",
+            campoSaldoConta: "[data-test='sidenav-user-balance']",
         }
         return seletoresEnvioDinheiro; // retorna os seletores para serem usados em outros métodos
     }
@@ -21,9 +22,26 @@ class EnviarDinheiro {
     }
 
     fazTransacao(valor, descricao) {
-        cy.get(this.listaSeletores().campoAmount).type(valor); // preenche o campo de valor da transação
-        cy.get(this.listaSeletores().campoNoteAmount).eq(1).type(descricao); // preenche o campo de descrição
-        cy.get(this.listaSeletores().btnPay).eq(1).click(); // clica no botão de pagar
+        cy.get(this.listaSeletores().campoSaldoConta).then(($saldo) => {
+            const saldoTexto = $saldo.text().replace('$', '').trim(); // Ex: "$250.00" → "250.00"
+            const saldoNumerico = parseFloat(saldoTexto);
+
+            cy.log(`💰 Saldo atual: ${saldoNumerico}`);
+            cy.log(`💸 Valor da transação: ${valor}`);
+
+            // verifica se o saldo é suficiente para a transação
+            if (saldoNumerico < valor) {
+                cy.log('🚫 Saldo insuficiente para realizar a transação');
+            } else if (saldoNumerico === valor) {
+                cy.log('⚖️ Saldo exatamente igual ao valor da transação');
+            } else {
+                cy.log('✅ Saldo suficiente para realizar a transação');
+            }
+
+            cy.get(this.listaSeletores().campoAmount).type(valor);
+            cy.get(this.listaSeletores().campoNoteAmount).eq(1).type(descricao);
+            cy.get(this.listaSeletores().btnPay).eq(1).click();
+        });
     }
 
     verificaTransacaoSucesso() {
