@@ -74,6 +74,17 @@
       "balance": 49474,
       "createdAt": "2023-12-07T04:39:38.383Z",
       "modifiedAt": "2024-03-07T00:07:36.510Z"
+    },
+    {
+      "id": "CIZ5PJJQC",
+      "uuid": "5a95bf79-17aa-476a-be99-447a2695bc2d",
+      "firstName": "Nilce",
+      "lastName": "Martins",
+      "username": "nilcemartins92",
+      "password": "$2a$10$b0AgSw2omGENvjvdW7YpkerAGqR77VrJuboGQ5hWQmiduiGE7c9OS",
+      "balance": 0,
+      "createdAt": "2025-05-28T21:18:39.731Z",
+      "modifiedAt": "2025-05-28T21:18:39.731Z"
     }
   ],
   "contacts": [
@@ -253,6 +264,17 @@
       "isDeleted": false,
       "createdAt": "2024-01-26T14:01:01.815Z",
       "modifiedAt": "2024-03-07T08:44:31.174Z"
+    },
+    {
+      "id": "TzNZfWEa3",
+      "uuid": "70159049-7672-4b8a-a6b7-59c383d3bd31",
+      "userId": "CIZ5PJJQC",
+      "bankName": "Bradesco",
+      "accountNumber": "987654321",
+      "routingNumber": "123456789",
+      "isDeleted": false,
+      "createdAt": "2025-05-28T21:19:09.592Z",
+      "modifiedAt": "2025-05-28T21:19:09.592Z"
     }
   ],
   "transactions": [

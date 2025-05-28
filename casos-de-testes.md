@@ -28,3 +28,14 @@ Dado que o usuário esteja na tela “Sign Up” do Real World App, quando preen
 Dado que o usuário tenho feito login na sua conta, quando clicar no botão “New” do menu, selecionar um contato, especificar a quantia no campo “Amount”, adicionar uma nota no campo “Add a note”, e clicar em “Pay”, então uma mensagem que a transação foi realizada deve ser exibida.
 
 ### CT06: Enviar dinheiro com saldo insuficiente
+Dado que o usuário tenha feito login na sua conta, quando clicar no botão “New” do menu, quando selecionar um contato na etapa “Select Contact”, então deve ser feita uma verificação se o saldo em sua conta é ou não suficiente para realizar a transação.
+
+<br>
+
+## Cenário 04: Visualizar histórico de transações
+
+### CT07: Visualizar histórico de transações com sucesso
+Dado que o usuário logado tenha realizado transações bancárias anteriores, quando acessar a aba "Mine" de sua conta, então deverão ser exibidas suas transações realizadas.
+
+### CT08: Tentar visualizar o histórico de transações de um usuário sem transações anteriores
+Dado que o usuário logado não tenha realizado nenhuma transação bancária anteriormente, quando acessar a aba "Mine" de sua conta, então nenhum registro de transação deve ser exibido em seu histórico.
