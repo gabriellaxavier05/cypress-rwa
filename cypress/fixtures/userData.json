@@ -7,6 +7,10 @@
         "username": "Heather",
         "password": "secreto"
     },
+    "usuarioSemSaldo": {
+        "username": "Heath93",
+        "password": "s3cret"
+    },
     "cadastro": {
         "firstName": "Nilce",
         "lastName": "Martins",
