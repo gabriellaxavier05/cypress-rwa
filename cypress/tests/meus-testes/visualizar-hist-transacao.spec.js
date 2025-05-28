@@ -31,9 +31,6 @@ describe('Testes de visualização de histórico de transações', () => {
 
         // Acessa a página de histórico de transações
         historicoTransacaoPage.acessoPagHistoricoTransacao(); // clica na aba de transações
-
-        // Verifica se a área de lista de transações está vazia
-        historicoTransacaoPage.verificaAreaListaTransacoesVisivel();
-
+        historicoTransacaoPage.verificaAreaVaziaTransacoesVisivel(); // verifica se a área de lista vazia de transações está visível
     });
 });

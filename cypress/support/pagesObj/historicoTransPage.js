@@ -3,6 +3,7 @@ class HistoricoTransacaoPage {
         const seletoresTransacao = {
             abaMineTransacao: "[data-test='nav-personal-tab']",
             areaListaTransacoes: "[data-test='transaction-list']",
+            areaListaVaziaTransacoes: "[data-test='empty-list-header']",
         }
 
         return seletoresTransacao; // retorna os seletores para serem usados em outros métodos
@@ -15,15 +16,13 @@ class HistoricoTransacaoPage {
     }
 
     verificaAreaListaTransacoesVisivel() {
-        cy.get('body').then(($body) => { // acessa o corpo do documento para verificar se a área de lista de transações está visível
-            if ($body.find(this.listaSeletores().areaListaTransacoes).length > 0) { // verifica se no corpo do documento existe a área de lista de transações
-                cy.get(this.listaSeletores().areaListaTransacoes).should('be.visible'); // verifica se a área de lista de transações está visível
-                cy.log('✅ Área de lista de transações está visível');
-            } else {
-                cy.get(this.listaSeletores().areaListaTransacoes).should('not.exist'); // verifica se a área de lista de transações não existe
-                cy.log('⚠️ Não há transações realizadas');
-            }
-        });
+        cy.get(this.listaSeletores().areaListaTransacoes).should('be.visible'); // verifica se a área de lista de transações está visível
+        cy.log('✅ Lista de transações visível'); // exibe no Test Runner do Cypress
+    }
+
+    verificaAreaVaziaTransacoesVisivel() {
+        cy.get(this.listaSeletores().areaListaVaziaTransacoes).should('be.visible'); // verifica se a área de lista vazia de transações está visível
+        cy.log('Nenhuma transação visível'); // exibe no Test Runner do Cypress
     }
 }
 
