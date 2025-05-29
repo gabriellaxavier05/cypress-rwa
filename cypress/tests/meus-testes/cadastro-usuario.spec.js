@@ -10,7 +10,7 @@ describe('Testes de Cadastro de usuário', () => {
         cy.clearLocalStorage(); // limpa tudo do localStorage
     });
 
-    it('Cadastro realizado com sucesso', () => {
+    it.only('Cadastro realizado com sucesso', () => {
         cadastroPage.acessoPagCadastro(); // acessa a página de cadastro
         cadastroPage.cadastroUsuario(
             userData.cadastro.firstName,
@@ -22,7 +22,7 @@ describe('Testes de Cadastro de usuário', () => {
         cadastroPage.verificaCadastroSucesso(); // verifica se o cadastro foi bem-sucedido
     });
 
-    it.only('Cadastro com dados diferentes nos campos Password e Confirm Password', () => {
+    it('Cadastro com dados diferentes nos campos Password e Confirm Password', () => {
         cadastroPage.acessoPagCadastro(); // acessa a página de cadastro
         cadastroPage.cadastroUsuario(
             userData.cadastro.firstName,

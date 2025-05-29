@@ -23,7 +23,7 @@ describe('Testes de visualização de histórico de transações', () => {
         historicoTransacaoPage.verificaAreaListaTransacoesVisivel(); // verifica se a área de lista de transações está visível
     });
 
-    it('Visualizar o histórico de transações de um usuário sem transações anteriores', () => {
+    it.only('Visualizar o histórico de transações de um usuário sem transações anteriores', () => {
         // Login
         loginPage.acessoPagLogin(); // acessa a página de login
         loginPage.loginUsuario(userData.cadastro.username, userData.cadastro.password); // realiza o login com os dados do usuário sem transações
