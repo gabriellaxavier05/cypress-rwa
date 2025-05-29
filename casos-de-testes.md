@@ -28,7 +28,7 @@ Dado que o usuário esteja na tela “Sign Up” do Real World App, quando preen
 Dado que o usuário tenho feito login na sua conta, quando clicar no botão “New” do menu, selecionar um contato, especificar a quantia no campo “Amount”, adicionar uma nota no campo “Add a note”, e clicar em “Pay”, então uma mensagem que a transação foi realizada deve ser exibida.
 
 ### CT06: Enviar dinheiro com saldo insuficiente
-Dado que o usuário tenha feito login na sua conta, quando clicar no botão “New” do menu, quando selecionar um contato na etapa “Select Contact”, então deve ser feita uma verificação se o saldo em sua conta é ou não suficiente para realizar a transação.
+Dado que o usuário tenha feito login na sua conta, quando clicar no botão “New” do menu e selecionar um contato na etapa “Select Contact”, então deve ser feita uma verificação se o saldo em sua conta é ou não suficiente para realizar a transação.
 
 <br>
 
