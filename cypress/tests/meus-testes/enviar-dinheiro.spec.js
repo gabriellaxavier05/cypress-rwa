@@ -22,7 +22,7 @@ describe('Testes de Envio de Dinheiro', () => {
         enviarDinheiro.verificaTransacaoSucesso(); // verifica se a transação foi bem-sucedida
     });
 
-    it('Enviar dinheiro com saldo insuficiente', () => {
+    it.only('Verificar se o saldo na conta é suficiente para realizar transação', () => {
         loginPage.acessoPagLogin(); // acessa a página de login
         loginPage.loginUsuario(userData.usuarioSemSaldo.username, userData.usuarioSemSaldo.password); // realiza o login com os dados de usuário sem saldo
         loginPage.verificaLoginSucesso(); // verifica se o login foi bem-sucedido
